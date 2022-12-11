@@ -26,7 +26,7 @@ fn part1(input: &str) {
             break;
         }
     }
-    println!("part1: {}", marker+1)
+    println!("part1: {}", marker + 1)
 }
 
 fn any_dupes(test: &str) -> bool {
@@ -46,7 +46,7 @@ fn part2(input: &str) {
         if idx < 14 {
             continue;
         }
-        if any_dupes(&input[idx-14..idx]) {
+        if any_dupes(&input[idx - 14..idx]) {
             marker = idx;
             break;
         }

@@ -3,7 +3,7 @@ use std::fs;
 #[derive(PartialEq)]
 enum Operation {
     Noop,
-    Addx
+    Addx,
 }
 
 impl Operation {
@@ -11,7 +11,7 @@ impl Operation {
         match s {
             "noop" => Operation::Noop,
             "addx" => Operation::Addx,
-            _ => panic!("invalid operation")
+            _ => panic!("invalid operation"),
         }
     }
 }
@@ -29,10 +29,7 @@ impl Instruction {
         if op == Operation::Addx {
             val = splits.next().unwrap().parse().unwrap();
         }
-        Instruction {
-            op,
-            val
-        }
+        Instruction { op, val }
     }
 }
 
@@ -69,7 +66,7 @@ fn part1(input: &str) {
         }
         if breakpoints.contains(&pc) {
             println!("{},{}", pc, val);
-            values.push(pc*val);
+            values.push(pc * val);
         }
     }
     println!("part1: {}", values.iter().sum::<isize>())
@@ -83,7 +80,7 @@ fn part2(input: &str) {
     let mut iter = instructions.iter();
     print!("#");
     while true {
-        let pos = pc%40;
+        let pos = pc % 40;
         if pos == 0 {
             print!("\n")
         }
@@ -101,12 +98,11 @@ fn part2(input: &str) {
                 }
             }
         }
-        if [val-1, val, val+1].contains(&pos) {
+        if [val - 1, val, val + 1].contains(&pos) {
             print!("#");
         } else {
             print!(".")
         }
-
     }
 }
 

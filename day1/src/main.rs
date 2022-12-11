@@ -1,6 +1,5 @@
 use std::fs;
 
-
 fn parse_input(input: &str) -> Vec<Vec<usize>> {
     let mut retval = Vec::new();
     let mut current = Vec::new();

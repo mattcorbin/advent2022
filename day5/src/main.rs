@@ -12,7 +12,7 @@ struct Instruction {
 
 fn bootstrap_stacks() -> Stacks {
     Stacks {
-        items: vec![] // Redacted
+        items: vec![], // Redacted
     }
 }
 
@@ -24,13 +24,7 @@ fn parse_instructions(input: &str) -> Vec<Instruction> {
         let mut stacks = splits.next().unwrap().split(" to ");
         let src = stacks.next().unwrap().parse().unwrap();
         let dst = stacks.next().unwrap().parse().unwrap();
-        retval.push(
-          Instruction{
-              count,
-              src,
-              dst,
-          }  
-        );
+        retval.push(Instruction { count, src, dst });
     }
     retval
 }
@@ -40,8 +34,8 @@ fn part1(input: &str) {
     let instructions = parse_instructions(input);
     for instruction in instructions {
         for _ in 0..instruction.count {
-            let mv = stacks.items[instruction.src-1].pop().unwrap();
-            stacks.items[instruction.dst-1].push(mv);
+            let mv = stacks.items[instruction.src - 1].pop().unwrap();
+            stacks.items[instruction.dst - 1].push(mv);
         }
     }
     let mut output = String::new();
@@ -49,7 +43,6 @@ fn part1(input: &str) {
         if let Some(top) = stack.pop() {
             output.push(top);
         }
-
     }
     println!("part1: {}", output)
 }
@@ -60,12 +53,12 @@ fn part2(input: &str) {
     for instruction in instructions {
         let mut temp = Vec::new();
         for _ in 0..instruction.count {
-            let mv = stacks.items[instruction.src-1].pop().unwrap();
+            let mv = stacks.items[instruction.src - 1].pop().unwrap();
             temp.push(mv);
         }
         temp.reverse();
         for item in temp {
-            stacks.items[instruction.dst-1].push(item);
+            stacks.items[instruction.dst - 1].push(item);
         }
     }
     let mut output = String::new();
@@ -73,7 +66,6 @@ fn part2(input: &str) {
         if let Some(top) = stack.pop() {
             output.push(top);
         }
-
     }
     println!("part2: {}", output)
 }

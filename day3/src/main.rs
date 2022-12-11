@@ -22,11 +22,11 @@ fn part1(input: &str) {
     let mut rucksacks = parse_input(input);
     let mut errors = Vec::new();
     for rucksack in rucksacks {
-        let compartments: Vec<&[char]> = rucksack.chunks(rucksack.len()/2).collect();
+        let compartments: Vec<&[char]> = rucksack.chunks(rucksack.len() / 2).collect();
         for item in compartments[0] {
             if compartments[1].contains(item) {
                 errors.push(item.clone());
-                break
+                break;
             }
         }
     }
@@ -46,15 +46,15 @@ fn part2(input: &str) {
                     if *a == *b && *b == *c {
                         badges.push(a);
                         end = true;
-                        break
+                        break;
                     }
                 }
                 if end {
-                    break
+                    break;
                 }
             }
             if end {
-                break
+                break;
             }
         }
     }

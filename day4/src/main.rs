@@ -2,12 +2,12 @@ use std::fs;
 
 struct Elf {
     start: usize,
-    end: usize
+    end: usize,
 }
 
 impl Elf {
     pub fn contains(&self, other: &Elf) -> bool {
-        return self.start <= other.start && self.end >= other.end
+        return self.start <= other.start && self.end >= other.end;
     }
 
     pub fn overlaps(&self, other: &Elf) -> bool {
@@ -28,10 +28,16 @@ fn parse_input(input: &str) -> Vec<Vec<Elf>> {
             let mut split = line.split(",");
             let first = split.next().unwrap();
             let mut bounds = first.split("-");
-            current.push(Elf{start: bounds.next().unwrap().parse().unwrap(),end: bounds.next().unwrap().parse().unwrap()});
+            current.push(Elf {
+                start: bounds.next().unwrap().parse().unwrap(),
+                end: bounds.next().unwrap().parse().unwrap(),
+            });
             let second = split.next().unwrap();
             let mut bounds = second.split("-");
-            current.push(Elf{start: bounds.next().unwrap().parse().unwrap(),end: bounds.next().unwrap().parse().unwrap()});
+            current.push(Elf {
+                start: bounds.next().unwrap().parse().unwrap(),
+                end: bounds.next().unwrap().parse().unwrap(),
+            });
             retval.push(current);
             current = Vec::new();
         }

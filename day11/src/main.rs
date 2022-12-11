@@ -83,8 +83,6 @@ fn part2(_: &str) {
     }
     inspections.sort();
     inspections.reverse();
-    println!("{:?}", inspections);
-
     println!("part2: {}", inspections[0] * inspections[1])
 }
 
